@@ -20,46 +20,20 @@
 
 		removeFromString = expression => value => value.replace(expression, ''),
 
-		trimLeft = removeFromString(/^[\s\t]+/),
-
-		trimRight = removeFromString(/[\s\t]+$/),
-
-		trim = compose(trimLeft, trimRight),
-
-		upperCase = value => String(value).toUpperCase(),
-
 		identity = value => value,
 
 		noop = () => {},
 
-		prime = value => {
-
-			if ((warble.is(value, 'even') && value !== 2) || warble.is(Math.sqrt(value), 'integer'))
-
-				return false;
-
-			for (let index = Math.floor(value / 2); index > 1; index--)
-
-				if (value % index === 0)
-
-					return false;
-
-			return true;
-
-		};
+		testRegExp = regexp => value => regexp.test(value);
 
 	let
 
 		improver = {
 			compose,
 			removeFromString,
-			trimLeft,
-			trimRight,
-			trim,
-			upperCase,
 			identity,
 			noop,
-			prime
+			testRegExp
 		};
 
 	((root, factory) => {
